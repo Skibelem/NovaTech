@@ -2,26 +2,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { testimonialsData } from '../../data/content';
 import { Quote } from 'lucide-react';
+import Reveal from '../ui/Reveal';
 
 const Testimonials = () => {
   return (
     <section id="testimonials" className="py-24 relative bg-nova-darker/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <Reveal className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-nova-yellow font-semibold tracking-wide uppercase text-sm mb-3">Client Stories</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white">Trusted by forward-thinking brands</h3>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonialsData.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="glass-card p-8 rounded-3xl relative hover:border-nova-blue/30 transition-all duration-300"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.12, duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
+              className="glass-card p-8 rounded-3xl relative hover:-translate-y-1.5 hover:border-nova-blue/30 transition-all duration-300 ease-out"
             >
               <Quote className="absolute top-8 right-8 w-10 h-10 text-white/5" />
 

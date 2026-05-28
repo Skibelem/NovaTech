@@ -4,6 +4,7 @@ import { Check } from 'lucide-react';
 import { packagesData } from '../../data/content';
 import Button from '../ui/Button';
 import { scrollToSection } from '../../utils/scroll';
+import Reveal from '../ui/Reveal';
 
 const Packages = ({ onPackageSelect }) => {
   const handleSelect = (pkgName) => {
@@ -14,20 +15,20 @@ const Packages = ({ onPackageSelect }) => {
     <section id="packages" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <Reveal className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-nova-yellow font-semibold tracking-wide uppercase text-sm mb-3">Pricing Plans</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">Packages tailored for your growth</h3>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {packagesData.map((pkg, index) => (
             <motion.div
               key={pkg.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`relative rounded-3xl p-8 ${
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.12, duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
+              className={`relative rounded-3xl p-8 transition-colors duration-300 ${
                 pkg.highlighted
                   ? 'bg-gradient-to-b from-nova-blue/20 to-nova-darker border border-nova-blue/50 shadow-[0_0_40px_rgba(3,23,252,0.15)] transform md:-translate-y-4'
                   : 'glass-card'

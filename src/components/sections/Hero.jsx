@@ -5,12 +5,48 @@ import { ArrowRight, PlayCircle } from 'lucide-react';
 import { scrollToSection } from '../../utils/scroll';
 
 const Hero = () => {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.6, 
+        ease: [0.215, 0.61, 0.355, 1] 
+      } 
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background gradients */}
+      {/* Background gradients with slow glowing motion */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-nova-blue/15 blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] w-[30%] h-[30%] rounded-full bg-nova-yellow/10 blur-[100px]" />
+        <motion.div 
+          animate={{
+            x: [0, 15, -10, 0],
+            y: [0, -20, 10, 0],
+            scale: [1, 1.05, 0.95, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-nova-blue/15 blur-[120px]" 
+        />
+        <motion.div 
+          animate={{
+            x: [0, -20, 15, 0],
+            y: [0, 15, -15, 0],
+            scale: [1, 0.95, 1.05, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-[20%] -right-[10%] w-[30%] h-[30%] rounded-full bg-nova-yellow/10 blur-[100px]" 
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -18,26 +54,47 @@ const Hero = () => {
 
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.12,
+                  delayChildren: 0.1
+                }
+              }
+            }}
             className="flex flex-col space-y-8"
           >
-            <div className="inline-flex items-center space-x-2 bg-white/5 border border-nova-yellow/20 rounded-full px-4 py-2 w-fit backdrop-blur-sm">
+            <motion.div 
+              variants={itemVariants}
+              className="inline-flex items-center space-x-2 bg-white/5 border border-nova-yellow/20 rounded-full px-4 py-2 w-fit backdrop-blur-sm"
+            >
               <span className="flex h-2 w-2 rounded-full bg-nova-yellow animate-pulse"></span>
               <span className="text-sm font-medium text-nova-gray">We are taking new projects</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-white">
+            <motion.h1 
+              variants={itemVariants}
+              className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-white"
+            >
               Tech That Moves Your <br />
               <span className="text-gradient">Business Forward.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg md:text-xl text-nova-gray max-w-xl leading-relaxed">
+            <motion.p 
+              variants={itemVariants}
+              className="text-lg md:text-xl text-nova-gray max-w-xl leading-relaxed"
+            >
               We build premium websites, intuitive dashboards, and robust digital systems designed to scale your operations and skyrocket your conversions.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4"
+            >
               <Button variant="primary" className="group" onClick={() => scrollToSection('contact')}>
                 Start a Project
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -46,9 +103,12 @@ const Hero = () => {
                 <PlayCircle className="mr-2 w-5 h-5" />
                 Explore Services
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center space-x-6 pt-8 border-t border-white/10">
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-center space-x-6 pt-8 border-t border-white/10"
+            >
               <div className="flex flex-col">
                 <span className="text-3xl font-bold text-white">50+</span>
                 <span className="text-sm text-nova-gray">Projects Delivered</span>
@@ -58,14 +118,14 @@ const Hero = () => {
                 <span className="text-3xl font-bold text-white">99%</span>
                 <span className="text-sm text-nova-gray">Client Satisfaction</span>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Visual/Mockup */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.96, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: [0.215, 0.61, 0.355, 1] }}
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden glass-card aspect-[4/3] group">

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Navbar from './components/sections/Navbar';
 import Hero from './components/sections/Hero';
 import Services from './components/sections/Services';
-import Packages from './components/sections/Packages';
 import Process from './components/sections/Process';
 import Projects from './components/sections/Projects';
 import Testimonials from './components/sections/Testimonials';
 import Contact from './components/sections/Contact';
 import CTASection from './components/sections/CTASection';
 import Footer from './components/sections/Footer';
+import WhatsAppFloatingCTA from './components/ui/WhatsAppFloatingCTA';
 
 function App() {
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -30,7 +30,6 @@ function App() {
       <main>
         <Hero />
         <Services />
-        <Packages onPackageSelect={handlePackageSelect} />
         <Process />
         <Projects onProjectSelect={handleProjectSelect} />
         <Testimonials />
@@ -38,6 +37,7 @@ function App() {
         <CTASection />
       </main>
       <Footer />
+      <WhatsAppFloatingCTA />
     </div>
   );
 }

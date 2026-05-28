@@ -6,6 +6,7 @@ import { scrollToSection } from '../../utils/scroll';
 import Button from '../ui/Button';
 import ProjectPreviewPlaceholder from '../ui/ProjectPreviewPlaceholder';
 import ProjectModal from '../ui/ProjectModal';
+import Reveal from '../ui/Reveal';
 
 const ProjectImage = ({ src, title }) => {
   const [hasError, setHasError] = useState(false);
@@ -19,7 +20,7 @@ const ProjectImage = ({ src, title }) => {
       src={src}
       alt={`${title} preview`}
       onError={() => setHasError(true)}
-      className="w-full h-full object-cover"
+      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
     />
   );
 };
@@ -37,7 +38,7 @@ const Projects = ({ onProjectSelect }) => {
     <section id="work" className="py-24 relative bg-nova-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+        <Reveal className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div className="max-w-3xl">
             <h2 className="text-nova-yellow font-semibold tracking-wide uppercase text-sm mb-3">Projects &amp; Solutions We've Worked On</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4 leading-tight">
@@ -46,19 +47,19 @@ const Projects = ({ onProjectSelect }) => {
           </div>
           <button onClick={() => scrollToSection('contact')} className="hidden md:flex items-center text-nova-yellow hover:text-white transition-colors duration-300 group font-medium mt-6 md:mt-0 shrink-0">
             Let's Build
-            <MessageSquare className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+            <MessageSquare className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newProjectsData.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="glass-card rounded-3xl overflow-hidden flex flex-col h-full hover:-translate-y-2 hover:border-nova-blue/30 hover:shadow-[0_0_32px_rgba(3,23,252,0.12)] transition-all duration-300 border border-white/10"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.12, duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
+              className="glass-card rounded-3xl overflow-hidden flex flex-col h-full hover:-translate-y-2 hover:border-nova-blue/30 hover:shadow-[0_0_32px_rgba(3,23,252,0.18)] transition-all duration-300 ease-out border border-white/10 group"
             >
               <div className="relative h-48 w-full border-b border-white/5 overflow-hidden">
                 <ProjectImage src={project.image} title={project.title} />

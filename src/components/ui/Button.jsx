@@ -1,7 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Button = ({ children, variant = 'primary', className = '', onClick, type = 'button', disabled = false }) => {
-  const base = 'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-300 ease-in-out hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-nova-darker disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 px-6 py-3 text-sm';
+  const base = 'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-nova-darker disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 text-sm';
 
   const variants = {
     primary:
@@ -13,14 +14,17 @@ const Button = ({ children, variant = 'primary', className = '', onClick, type =
   };
 
   return (
-    <button
+    <motion.button
       type={type}
       onClick={onClick}
       disabled={disabled}
+      whileHover={disabled ? {} : { scale: 1.025, y: -2 }}
+      whileTap={disabled ? {} : { scale: 0.975, y: 0 }}
+      transition={{ type: 'spring', stiffness: 500, damping: 25 }}
       className={`${base} ${variants[variant] ?? variants.primary} ${className}`}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 
