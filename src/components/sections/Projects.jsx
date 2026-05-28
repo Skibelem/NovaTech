@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { newProjectsData } from '../../data/projects';
 import { MessageSquare, Check, ArrowRight } from 'lucide-react';
 import { scrollToSection } from '../../utils/scroll';
 import Button from '../ui/Button';
 import ProjectPreviewPlaceholder from '../ui/ProjectPreviewPlaceholder';
+import ProjectModal from '../ui/ProjectModal';
 
 const ProjectImage = ({ src, title }) => {
   const [hasError, setHasError] = useState(false);
@@ -24,7 +25,10 @@ const ProjectImage = ({ src, title }) => {
 };
 
 const Projects = ({ onProjectSelect }) => {
-  const handleSelect = (projectName) => {
+  const [activeProject, setActiveProject] = useState(null);
+
+  const handleBuildSimilar = (projectName) => {
+    setActiveProject(null);
     if (onProjectSelect) onProjectSelect(projectName);
     scrollToSection('contact');
   };
@@ -74,12 +78,17 @@ const Projects = ({ onProjectSelect }) => {
                 <div className="mb-8">
                   <h5 className="text-white text-sm font-semibold mb-3">Key Features:</h5>
                   <ul className="space-y-2">
-                    {project.features.map((feature, i) => (
+                    {project.features.slice(0, 3).map((feature, i) => (
                       <li key={i} className="flex items-start">
                         <Check className="w-4 h-4 text-nova-yellow mr-2 shrink-0 mt-0.5" />
-                        <span className="text-nova-gray text-sm">{feature}</span>
+                        <span className="text-nova-gray text-sm line-clamp-1">{feature}</span>
                       </li>
                     ))}
+                    {project.features.length > 3 && (
+                      <li className="text-nova-yellow text-xs font-medium pl-6 pt-1">
+                        + {project.features.length - 3} more key features
+                      </li>
+                    )}
                   </ul>
                 </div>
 
@@ -87,7 +96,7 @@ const Projects = ({ onProjectSelect }) => {
                   <Button
                     variant="outline"
                     className="w-full group"
-                    onClick={() => handleSelect(project.title)}
+                    onClick={() => setActiveProject(project)}
                   >
                     View Details
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -106,9 +115,21 @@ const Projects = ({ onProjectSelect }) => {
         </div>
 
       </div>
+
+      {/* Modal rendering inside AnimatePresence for exit animations */}
+      <AnimatePresence>
+        {activeProject && (
+          <ProjectModal
+            project={activeProject}
+            onClose={() => setActiveProject(null)}
+            onBuildSimilar={handleBuildSimilar}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
 export default Projects;
+
 
