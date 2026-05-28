@@ -1,0 +1,147 @@
+/* ─── Google Font ──────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ─── Base ─────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050816;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #02030a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0317fc33;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0317fc66;
+  }
+}
+
+/* ─── Components ───────────────────────────────────────────────── */
+@layer components {
+  /* Glassmorphism card — used across all sections */
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] transition-colors duration-300;
+  }
+
+  /* Primary gradient text — hero headline accent */
+  .text-gradient {
+    background: linear-gradient(135deg, #0317fc 0%, #6b7cff 40%, #fcfc03 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section container shorthand */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section label — small uppercase eyebrow text */
+  .section-label {
+    @apply text-nova-yellow font-semibold tracking-wide uppercase text-sm mb-3;
+  }
+}
+
+/* ─── Utilities ────────────────────────────────────────────────── */
+@layer utilities {
+  /* Subtle animated gradient border on focus */
+  .focus-ring-nova {
+    @apply focus:outline-none focus:ring-2 focus:ring-nova-blue focus:ring-offset-2 focus:ring-offset-nova-darker;
+  }
+
+  /* Soft glow helpers */
+  .glow-blue {
+    box-shadow: 0 0 24px rgba(3, 23, 252, 0.3);
+  }
+  .glow-yellow {
+    box-shadow: 0 0 24px rgba(252, 252, 3, 0.25);
+  }
+
+  /* Upgraded Premium Nav Link Underline Reveal from Center */
+  .nav-link {
+    position: relative;
+    transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #fcfc03;
+    border-radius: 9999px;
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    pointer-events: none;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    box-shadow: 0 0 8px rgba(252, 252, 3, 0.6);
+  }
+
+  .nav-link:hover {
+    transform: translateY(-1.5px);
+  }
+
+  /* Active Nav Link Highlights */
+  .nav-link-active {
+    @apply text-nova-yellow !important;
+  }
+  
+  .nav-link-active::after {
+    width: 100%;
+    left: 0;
+    box-shadow: 0 0 10px rgba(252, 252, 3, 0.8);
+  }
+
+  /* Premium CTA Button Glow */
+  .cta-btn-premium {
+    @apply bg-nova-blue text-white font-semibold rounded-full px-6 py-2.5 text-sm transition-all duration-300 ease-out;
+    box-shadow: 0 4px 14px rgba(3, 23, 252, 0.25);
+  }
+
+  .cta-btn-premium:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(252, 252, 3, 0.45);
+  }
+
+  .cta-btn-premium:active {
+    transform: scale(0.98);
+  }
+
+  /* Logo Text Hover Glow */
+  .logo-text-glow {
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+  }
+  .group:hover .logo-text-glow {
+    text-shadow: 0 0 12px rgba(252, 252, 3, 0.45);
+  }
+}
