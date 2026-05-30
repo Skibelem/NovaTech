@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2 } from 'lucide-react';
+import Logo from '../ui/Logo';
 import { scrollToSection } from '../../utils/scroll';
 
 const navLinks = [
@@ -120,19 +120,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
 
           {/* Logo Area */}
-          <button
-            onClick={() => handleNav('home')}
-            className="flex items-center space-x-3 group relative focus:outline-none"
-            aria-label="NovaTech Homepage"
-          >
-            <div className="relative flex items-center justify-center">
-              <Code2 className="w-7 h-7 text-nova-blue transition-all duration-500 group-hover:rotate-[360deg] group-hover:text-nova-yellow group-hover:drop-shadow-[0_0_8px_rgba(3,23,252,0.6)]" />
-              <div className="absolute -inset-1 bg-nova-blue/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-            </div>
-            <span className="text-xl font-bold text-white tracking-tight logo-text-glow">
-              NovaTech<span className="text-nova-yellow transition-all duration-300 group-hover:animate-pulse">.</span>
-            </span>
-          </button>
+          <Logo onClick={() => handleNav('home')} ariaLabel="NovaTech Homepage" />
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-8 bg-white/[0.02] border border-white/[0.04] backdrop-blur-md rounded-full px-8 py-2.5">

@@ -4,10 +4,13 @@ import Hero from './components/sections/Hero';
 import Services from './components/sections/Services';
 import Process from './components/sections/Process';
 import Projects from './components/sections/Projects';
+import Metrics from './components/sections/Metrics';
+import WhyChooseUs from './components/sections/WhyChooseUs';
 import Testimonials from './components/sections/Testimonials';
 import Contact from './components/sections/Contact';
 import CTASection from './components/sections/CTASection';
 import Footer from './components/sections/Footer';
+import Packages from './components/sections/Packages';
 import WhatsAppFloatingCTA from './components/ui/WhatsAppFloatingCTA';
 
 function App() {
@@ -32,7 +35,10 @@ function App() {
         <Services />
         <Process />
         <Projects onProjectSelect={handleProjectSelect} />
+        <Metrics />
+        <WhyChooseUs />
         <Testimonials />
+        <Packages onPackageSelect={handlePackageSelect} />
         <Contact selectedPackage={selectedPackage} selectedProject={selectedProject} />
         <CTASection />
       </main>

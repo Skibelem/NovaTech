@@ -80,7 +80,7 @@ const ProjectModal = ({ project, onClose, onBuildSimilar }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-in">
       {/* Dark semi-transparent overlay with backdrop blur */}
       <motion.div
         variants={backdropVariants}
@@ -134,67 +134,93 @@ const ProjectModal = ({ project, onClose, onBuildSimilar }) => {
           )}
         </div>
 
-        {/* RIGHT PANEL: Project Information Details */}
+        {/* RIGHT PANEL: Case Study Content details */}
         <div className="w-full md:w-7/12 lg:w-1/2 p-6 sm:p-8 md:p-10 lg:p-12 overflow-y-auto flex flex-col justify-between">
           <div>
             {/* Category Eyebrow */}
-            <span className="inline-block bg-nova-blue/20 border border-nova-blue/30 text-nova-yellow text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md mb-4">
+            <span className="inline-block bg-nova-blue/20 border border-nova-blue/30 text-nova-yellow text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md mb-4">
               {project.category}
             </span>
 
             {/* Title */}
             <h3 
               id="modal-project-title" 
-              className="text-2xl sm:text-3xl font-extrabold text-white mb-4 leading-tight tracking-tight"
+              className="text-2xl sm:text-3xl font-extrabold text-white mb-6 leading-tight tracking-tight animate-fade-in"
             >
               {project.title}
             </h3>
 
-            {/* Description */}
-            <p className="text-nova-gray text-sm sm:text-base leading-relaxed mb-6">
-              {project.fullDescription || project.description}
-            </p>
-
-            {/* Premium Features List */}
-            <div className="mb-6">
-              <h4 className="text-white text-xs font-semibold mb-3 tracking-wider uppercase opacity-90">
-                Key Features Included
+            {/* CASE STUDY SECTION 1: CHALLENGE */}
+            <div className="bg-red-500/[0.01] border border-red-500/10 p-5 rounded-2xl mb-5">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-red-400 mb-2.5 flex items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400 mr-2.5 animate-pulse" />
+                The Challenge
               </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <p className="text-nova-gray text-xs sm:text-sm leading-relaxed font-medium">
+                {project.challenge}
+              </p>
+            </div>
+
+            {/* CASE STUDY SECTION 2: SOLUTION */}
+            <div className="bg-nova-blue/[0.01] border border-nova-blue/15 p-5 rounded-2xl mb-5 shadow-sm">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-nova-blue mb-2.5 flex items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-nova-blue mr-2.5 shadow-[0_0_6px_#0317fc]" />
+                The Solution
+              </h4>
+              <p className="text-nova-gray text-xs sm:text-sm leading-relaxed font-medium">
+                {project.solution}
+              </p>
+            </div>
+
+            {/* CASE STUDY SECTION 3: IMPACT */}
+            <div className="bg-nova-yellow/[0.01] border border-nova-yellow/15 p-5 rounded-2xl mb-5">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-nova-yellow mb-2.5 flex items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-nova-yellow mr-2.5 shadow-[0_0_6px_#fcfc03]" />
+                The Impact &amp; Value
+              </h4>
+              <p className="text-white/95 text-xs sm:text-sm leading-relaxed font-bold">
+                {project.impact}
+              </p>
+            </div>
+
+            {/* CASE STUDY SECTION 4: TECH STACK */}
+            <div className="mb-6 pt-2">
+              <h4 className="text-white text-xs font-bold mb-3 tracking-wider uppercase opacity-85">
+                Case Study Tech Stack
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <span 
+                    key={tech} 
+                    className="px-3.5 py-1.5 bg-nova-blue/5 border border-nova-blue/20 text-white/90 text-xs font-medium rounded-xl shadow-inner hover:border-nova-yellow/40 hover:bg-nova-yellow/[0.04] transition-all duration-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* CASE STUDY SECTION 5: DELIVERABLES */}
+            <div className="mb-8 bg-white/[0.01] border border-white/5 p-5 rounded-2xl">
+              <h4 className="text-white/80 text-xs font-bold mb-3.5 tracking-wider uppercase">
+                Key Features Delivered
+              </h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {project.features.map((feature, i) => (
                   <li 
                     key={i} 
-                    className="flex items-start bg-white/[0.02] border border-white/[0.04] p-2.5 rounded-xl transition-all duration-300 hover:bg-white/[0.04]"
+                    className="flex items-start"
                   >
-                    <Check className="w-4 h-4 text-nova-yellow mr-2 shrink-0 mt-0.5" />
+                    <Check className="w-3.5 h-3.5 text-nova-yellow mr-2 shrink-0 mt-0.5" />
                     <span className="text-nova-gray text-xs leading-normal">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* Technologies and Tools Glowing tags */}
-            {project.tools && project.tools.length > 0 && (
-              <div className="mb-8">
-                <h4 className="text-white text-xs font-semibold mb-3 tracking-wider uppercase opacity-90">
-                  Technologies &amp; Tools Used
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.tools.map((tool, i) => (
-                    <span 
-                      key={i} 
-                      className="px-3 py-1.5 bg-nova-blue/10 border border-nova-blue/25 text-white/90 text-xs rounded-full shadow-inner hover:border-nova-yellow/40 hover:bg-nova-yellow/5 hover:text-white transition-all duration-300"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
           {/* CTA Footer Section */}
-          <div className="mt-6 pt-6 border-t border-white/5">
+          <div className="mt-4 pt-6 border-t border-white/5">
             <Button
               variant="primary"
               onClick={() => onBuildSimilar(project.title)}

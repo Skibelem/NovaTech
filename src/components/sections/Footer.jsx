@@ -1,5 +1,6 @@
 import React from 'react';
-import { Code2, Twitter, Linkedin, Instagram, Github } from 'lucide-react';
+import { Twitter, Linkedin, Instagram, Github } from 'lucide-react';
+import Logo from '../ui/Logo';
 import { scrollToSection } from '../../utils/scroll';
 
 const Footer = () => {
@@ -9,10 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
 
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
-              <Code2 className="w-8 h-8 text-nova-blue" />
-              <span className="text-2xl font-bold text-white tracking-tight">NovaTech<span className="text-nova-yellow">.</span></span>
-            </div>
+            <Logo className="mb-6" iconClassName="w-8 h-8" textClassName="text-2xl" />
             <p className="text-nova-gray mb-6 max-w-sm">
               We build digital solutions that move your business forward. Premium quality, modern design, and scalable architecture.
             </p>

@@ -150,21 +150,30 @@ export const projectsData = [
 
 export const testimonialsData = [
   {
-    id: 'test-1',
-    quote: "NovaTech transformed our digital presence. Their attention to detail and modern aesthetic completely elevated our brand. Sales have increased by 40% since the new site launched.",
-    author: "Sarah Jenkins",
-    role: "CEO, TechFlow",
+    id: 1,
+    name: "Daniel Adebayo",
+    company: "PeerTrust",
+    role: "Product Lead",
+    review:
+      "NovaTech transformed our escrow platform idea into a clean and modern digital product experience. The interface feels secure, intuitive, and professional. Their attention to user trust and transaction flow was impressive.",
+    rating: 5,
   },
   {
-    id: 'test-2',
-    quote: "The dashboard they built for our internal operations is a game-changer. It's incredibly fast, intuitive, and beautifully designed. Highly recommend their services.",
-    author: "Marcus Chen",
-    role: "Operations Director, Globex",
+    id: 2,
+    name: "Sarah Johnson",
+    company: "Titan Coffee",
+    role: "Brand Manager",
+    review:
+      "Working with NovaTech elevated our online presence completely. The website captured the premium identity of our coffee brand perfectly while keeping the shopping experience smooth and responsive across all devices.",
+    rating: 5,
   },
   {
-    id: 'test-3',
-    quote: "From discovery to launch, the NovaTech team was professional, responsive, and technically brilliant. They understood our vision and delivered beyond our expectations.",
-    author: "Elena Rodriguez",
-    role: "Founder, StyleSprint",
+    id: 3,
+    name: "Dr. Michael Adeyemi",
+    company: "EduAlert AI",
+    role: "Academic Coordinator",
+    review:
+      "NovaTech brought our academic risk detection concept to life with a smart and visually polished solution. The platform feels innovative, easy to understand, and highly relevant for modern educational systems.",
+    rating: 5,
   },
 ];
