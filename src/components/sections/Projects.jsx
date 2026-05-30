@@ -20,6 +20,7 @@ const ProjectImage = ({ src, title }) => {
       src={src}
       alt={`${title} preview`}
       onError={() => setHasError(true)}
+      loading="lazy"
       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
     />
   );

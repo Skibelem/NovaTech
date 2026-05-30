@@ -83,6 +83,7 @@ const Metrics = () => {
                   duration: 0.6,
                   ease: [0.16, 1, 0.3, 1],
                 }}
+                style={{ willChange: 'transform' }}
                 className="group relative bg-white/[0.01] backdrop-blur-md rounded-[32px] border border-white/10 p-8 flex flex-col items-start transition-all duration-500 ease-out hover:-translate-y-2 hover:border-nova-blue/30 hover:shadow-[0_15px_35px_rgba(3,23,252,0.12),_0_0_20px_rgba(252,252,3,0.04)]"
               >
                 {/* Subtle colored accent glow inside card */}

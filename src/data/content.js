@@ -151,11 +151,11 @@ export const projectsData = [
 export const testimonialsData = [
   {
     id: 1,
-    name: "Daniel Adebayo",
+    name: "David Okafor",
     company: "PeerTrust",
-    role: "Product Lead",
+    role: "Founder",
     review:
-      "NovaTech transformed our escrow platform idea into a clean and modern digital product experience. The interface feels secure, intuitive, and professional. Their attention to user trust and transaction flow was impressive.",
+      "NovaTech transformed our P2P trading concept into a polished and secure platform. Their attention to user experience and transaction trust mechanisms was exceptional.",
     rating: 5,
   },
   {
@@ -164,7 +164,7 @@ export const testimonialsData = [
     company: "Titan Coffee",
     role: "Brand Manager",
     review:
-      "Working with NovaTech elevated our online presence completely. The website captured the premium identity of our coffee brand perfectly while keeping the shopping experience smooth and responsive across all devices.",
+      "Working with NovaTech elevated our online presence completely. The website captured the premium identity of our coffee brand perfectly while keeping the shopping experience smooth and responsive.",
     rating: 5,
   },
   {
@@ -173,7 +173,7 @@ export const testimonialsData = [
     company: "EduAlert AI",
     role: "Academic Coordinator",
     review:
-      "NovaTech brought our academic risk detection concept to life with a smart and visually polished solution. The platform feels innovative, easy to understand, and highly relevant for modern educational systems.",
+      "NovaTech brought our academic risk detection concept to life with a smart and visually polished solution. The platform feels innovative, intuitive, and highly relevant for modern education.",
     rating: 5,
   },
 ];
